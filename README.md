@@ -107,3 +107,37 @@ Howevery, the API is limited. But you can study the assembly code e.g. arm/cache
 Knowing how physical address is mapped to cache, set associative and replacement policy will be helpful.
 [Cache1 Lecture](https://courses.cs.washington.edu/courses/cse410/10sp/lectures/11-cache-1.pdf) from CSE 410 University of Washington.
 [Cache2 Lecture](https://courses.cs.washington.edu/courses/cse410/10sp/lectures/12-cache-2.pdf) from CSE 410 University of Washington.
+
+## load an executable image over USB
+
+
+I use [armory-boot-usb](https://github.com/usbarmory/armory-boot/tree/master/cmd/armory-boot-usb) to load an executable image over USB.
+
+
+## Set up Go intellisense
+
+Install Go extension from VScode extensions tab
+
+In your VScode, press `Ctrl+Shift+P` and search for `Preference:Open User Settings(JSON)`. Add the following json entry
+
+```json
+// Here we use path to our Tamago compiler, not the original GO compiler
+{
+    "go.goroot": "/home/lizeren/tamago-go-latest",
+    "go.alternateTools": {
+        "go": "/home/lizeren/tamago-go-latest/bin/go"
+    },
+    "go.toolsGopath": "/home/lizeren/tamago-go-latest",
+    "go.useLanguageServer": true
+}
+```
+
+Install Go tools for IntelliSense:
+Open the VS Code terminal and run:
+
+```bash
+/home/lizeren/tamago-go-latest/bin/go install golang.org/x/tools/gopls@latest
+/home/lizeren/tamago-go-latest/bin/go install github.com/go-delve/delve/cmd/dlv@latest
+```
+
+Restart the VScode
